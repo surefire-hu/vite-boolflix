@@ -45,11 +45,11 @@ export default {
     <li class="p-4 flex flex-col items-center m-w">
         <div class="w-full flex justify-center mb-2">
             <img v-if="image !== null" :src="`${this.store.apiPoster}${image}`" :alt="title" class="rounded max-w-full h-auto">
-            <h1 v-else class="text-red-500">Non Abbiamo Trovato Nulla :\</h1>
+            <h1 v-else class="text-red-500">Sorry we didn't find anything :\</h1>
         </div>
         <h3 class="text-lg font-bold text-center">{{ title }}</h3> 
         <h2 class="text-gray-400 text-center">{{ originalTitle }}</h2>
-        <p >Lingua: {{ originalLanguage }}</p>
+        <p >Language: {{ originalLanguage }}</p>
         <Flag :language="formattedLanguage.toLowerCase()"/> 
         <div class="flex mb-2">
             <img v-for="n in myVote" src="/stella.png" alt="star_to_vote" class="w-4 h-4">
