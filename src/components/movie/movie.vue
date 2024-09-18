@@ -1,8 +1,11 @@
 <script>
-//importazione file global state
+import Flag from '../general/flag.vue';
 import { store } from '../../store';
 export default {
     name:'Movie',
+    components: {
+        Flag,
+    },
     data() {
         return {
             store,
@@ -23,6 +26,16 @@ export default {
         },
         myVote() {
             return Math.ceil(this.vote / 2);
+        },
+        formattedLanguage() {
+            const languageMap = {
+                'en' : 'us',
+                'ja' : 'jp',
+                'fr' : 'fr',
+                'it' : 'it',
+                'zh' : 'cn',
+            };
+            return languageMap[this.originalLanguage] || this.originalLanguage;
         }
     }
 };
@@ -36,7 +49,7 @@ export default {
         </div>
         <h3 class="text-lg font-bold text-center">{{ title }}</h3> 
         <h2 class="text-gray-400 text-center">{{ originalTitle }}</h2>
-        <p>Lingua: {{ originalLanguage }}</p>
+        <p>Lingua: {{ originalLanguage }} <Flag :language="formattedLanguage.toLowerCase()"/> </p>
         <div class="flex mb-2">
             <img v-for="n in myVote" src="/stella.png" alt="star_to_vote" class="w-4 h-4">
             <img v-for="n in emptyStars" src="/stellaVuota.png" alt="star_to_vote" class="w-4 h-4">
