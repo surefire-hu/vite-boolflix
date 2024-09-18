@@ -49,7 +49,8 @@ export default {
         </div>
         <h3 class="text-lg font-bold text-center">{{ title }}</h3> 
         <h2 class="text-gray-400 text-center">{{ originalTitle }}</h2>
-        <p>Lingua: {{ originalLanguage }} <Flag :language="formattedLanguage.toLowerCase()"/> </p>
+        <p >Lingua: {{ originalLanguage }}</p>
+        <Flag :language="formattedLanguage.toLowerCase()"/> 
         <div class="flex mb-2">
             <img v-for="n in myVote" src="/stella.png" alt="star_to_vote" class="w-4 h-4">
             <img v-for="n in emptyStars" src="/stellaVuota.png" alt="star_to_vote" class="w-4 h-4">
