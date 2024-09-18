@@ -42,7 +42,7 @@ export default {
 </script>
 
 <template>
-    <li class="bg-gray-800 rounded-lg shadow-md p-4 flex flex-col items-center">
+    <li class="p-4 flex flex-col items-center m-w">
         <div class="w-full flex justify-center mb-2">
             <img v-if="image !== null" :src="`${this.store.apiPoster}${image}`" :alt="title" class="rounded max-w-full h-auto">
             <h1 v-else class="text-red-500">Non Abbiamo Trovato Nulla :\</h1>
@@ -55,7 +55,7 @@ export default {
             <img v-for="n in myVote" src="/stella.png" alt="star_to_vote" class="w-4 h-4">
             <img v-for="n in emptyStars" src="/stellaVuota.png" alt="star_to_vote" class="w-4 h-4">
         </div>
-        <p class="text-gray-300 text-center">{{ overview }}</p>
+        <p class="text-gray-300 text-center h-24 overflow-hidden">{{ overview }}</p>
     </li>
 </template>
 

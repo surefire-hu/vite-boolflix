@@ -22,7 +22,7 @@ export default {
                     <li><a href="#" class="text-gray-300 hover:text-white">About</a></li>
                 </ul>
             </div>
-            <form @submit.prevent="$emit('apicall')" class="flex items-center">
+            <form @submit.prevent.enter="$emit('apicall')" class="flex items-center">
                 <input 
                     v-model="store.searchKey"
                     type="text" 

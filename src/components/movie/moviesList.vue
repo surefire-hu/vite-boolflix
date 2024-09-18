@@ -20,7 +20,6 @@ export default {
             <Movie 
                 v-for="movie in store.movies" 
                 :key="movie.id"
-                class="bg-gray-500 rounded-lg shadow-md p-4"
                 :title="movie.title" 
                 :originalTitle="movie.original_title" 
                 :originalLanguage="movie.original_language" 
@@ -35,7 +34,6 @@ export default {
             <Movie 
                 v-for="serie in store.series" 
                 :key="serie.id"
-                class="bg-gray-500 rounded-lg shadow-md p-4"
                 :title="serie.name" 
                 :originalTitle="serie.original_name" 
                 :originalLanguage="serie.original_language" 
