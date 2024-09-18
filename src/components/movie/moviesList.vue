@@ -13,7 +13,6 @@ export default {
     },
 };
 </script>
-
 <template>
     <div>
         <h2 class="text-6xl font-bold text-gray-300 mb-4 text-center p-6">Film</h2>

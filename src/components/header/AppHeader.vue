@@ -35,5 +35,4 @@ export default {
 </template>
 
 <style scoped>
-/* Aggiungi eventuali stili aggiuntivi qui */
 </style>
