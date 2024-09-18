@@ -1,46 +1,52 @@
 <script>
-/* 
-  Per importare ed utilizzare un componente dentro un altro devo SEMPRE seguire questi 3 passi:
-  1) Importazione del componente
-  2) Dichiarazione del componente
-  3) Utilizzo del componente
-*/
-// 1) Importazione del componente
-import AppHeader from './components/AppHeader.vue';
+import AppHeader from './components/header/AppHeader.vue';
+import AppMain from './components/main/AppMain.vue';
+import { store } from './store';
+import axios from 'axios';
 
 export default {
-  data() {
-    return { 
-      count: 0
-    }
-  },
-  // 2) Dichiarazione del componente
-  components: {
-    AppHeader
-  },
-  methods: {
-    incrementCount() {
-      this.count++;
-    }
-  }
-}
+    name: 'AppBoolflix',
+    components: {
+        AppHeader,
+        AppMain,
+    },
+    data() {
+        return {
+            store,
+        };
+    },
+    methods: {
+      callApiTmdb() {
+        console.log("Chiamata API con searchKey:", this.store.searchKey);
+        const params = { query: this.store.searchKey };
+        axios.get(this.store.apiUrlMovie, { params })
+            .then((data) => {
+                console.log("Risultati film:", data.data.results);
+                this.store.movies = data.data.results;
+                this.store.searchKey = ''
+            })
+            .catch((error) => {
+                console.error("Errore nella chiamata API:", error);
+            });
+        axios.get(this.store.apiUrlSeriesTv, { params })
+            .then((data) => {
+                console.log("Risultati serie TV:", data.data.results);
+                this.store.series = data.data.results;
+            })
+            .catch((error) => {
+                console.error("Errore nella chiamata API:", error);
+            });
+    },
+        },
+    created() {
+        this.callApiTmdb();
+    }}
 </script>
 
 <template>
-  <div>
-    <!-- 3) Utilizzo del componente -->
-    <AppHeader />
-    
-    <main>
-      <button @click="incrementCount()">
-        {{ count }}
-      </button>
-    </main>
-  </div>
+    <AppHeader @apicall="callApiTmdb"></AppHeader>
+    <AppMain></AppMain>
 </template>
 
-<style scoped>
-main {
-  text-align: center;
-}
+<style>
 </style>
