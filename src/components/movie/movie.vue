@@ -31,8 +31,6 @@ export default {
             const languageMap = {
                 'en' : 'us',
                 'ja' : 'jp',
-                'fr' : 'fr',
-                'it' : 'it',
                 'zh' : 'cn',
             };
             return languageMap[this.originalLanguage] || this.originalLanguage;
